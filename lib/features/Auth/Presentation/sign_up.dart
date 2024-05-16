@@ -2,7 +2,6 @@ import 'package:easy_padding/easy_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:ntc_totoro_pets/core/colors/palette.dart';
 import 'package:ntc_totoro_pets/widgets/TextFields/texfiel_user.dart';
-import 'package:ntc_totoro_pets/widgets/TextFields/textfield_password.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -30,10 +29,14 @@ class SignUp extends StatelessWidget {
                     height: 220,
                   ),
                   const TextfieldUser(
-                    hintext: 'Email Address',
+                    hintText: 'Email Address',
                     icon: Icons.mail_outline,
                   ).only(bottom: 45),
-                  const TextFieldPassword(),
+                  const TextfieldUser(
+                    hintText: 'Password',
+                    icon: Icons.lock_outline,
+                    obscuretext: true,
+                  ),
                 ],
               ),
             ),
