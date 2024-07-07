@@ -6,8 +6,8 @@ import 'package:ntc_totoro_pets/widgets/texfiel_user.dart';
 import 'package:ntc_totoro_pets/widgets/texts.dart';
 import 'package:sizer/sizer.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,14 @@ class LoginView extends StatelessWidget {
                 width: 35.w,
               ).marginOnly(bottom: 2.h),
               const Texts.bold(
-                'LOGIN',
+                'Registrarse',
                 fontSize: 25,
                 color: Palette.black,
               ).marginOnly(bottom: 5.h),
+              const TextfieldUser(
+                backgroundColor: Palette.greytranparent,
+                hintText: 'Name',
+              ).marginOnly(bottom: 2.h),
               const TextfieldUser(
                 backgroundColor: Palette.greytranparent,
                 hintText: 'Email Address',
@@ -42,36 +46,22 @@ class LoginView extends StatelessWidget {
                 backgroundColor: Palette.greytranparent,
                 hintText: 'Password',
                 obscuretext: true,
-              ).marginOnly(bottom: 2.h),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    '¿Has olvidado tu contraseña?',
-                    style: TextStyle(
-                      color: Palette.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ).marginOnly(bottom: 2.h),
+              ).marginOnly(bottom: 4.h),
               CustomButton(
-                text: 'Iniciar Session',
+                text: 'Registrarme',
                 backgroundColor: Palette.green,
                 textColor: Palette.black,
                 onPressed: () {
-                  Get.toNamed("/home");
+                  Get.toNamed("/login");
                 },
               ),
               const Spacer(),
               TextButton(
                 onPressed: () {
-                  Get.toNamed("/register");
+                  Get.toNamed("/login");
                 },
                 child: const Text(
-                  'Registarse',
+                  'Ya tengo una cuenta',
                   style: TextStyle(
                     color: Palette.black,
                     fontSize: 28,
@@ -80,7 +70,7 @@ class LoginView extends StatelessWidget {
                 ),
               ),
             ],
-          ).marginSymmetric(horizontal: 10.w, vertical: 7.h),
+          ).marginSymmetric(horizontal: 10.w, vertical: 5.h),
         ),
       ),
     );

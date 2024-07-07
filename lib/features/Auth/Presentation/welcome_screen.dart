@@ -1,7 +1,10 @@
 import 'package:easy_padding/easy_padding.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:ntc_totoro_pets/core/colors/palette.dart';
+import 'package:ntc_totoro_pets/widgets/custom_button.dart';
+import 'package:ntc_totoro_pets/widgets/texts.dart';
+import 'package:sizer/sizer.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -10,86 +13,60 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.waterGreen,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Column(
-              children: [
-                Image.asset(
-                  'assets/images/pikachu.png',
-                  height: 250,
-                ).only(bottom: 70),
-                const Text(
-                  'Hola Bienvenido',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40,
-                  ),
-                ).only(bottom: 25),
-                const Text(
-                  '"Mientras te sientas y te quedas nosotros\n                  saldremos y jugaremos"',
-                  style: TextStyle(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/pikachu.png',
+                    height: 55.w,
+                  ).only(bottom: 5.h),
+                  const Texts.bold(
+                    'Hola Bienvenido',
                     fontSize: 20,
                     color: Palette.black,
-                  ),
-                ).only(bottom: 80),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 140),
-                  height: 65,
-                  child: ElevatedButton(
+                  ).only(bottom: 3.h),
+                  const Texts.regular(
+                    '"Mientras te sientas y te quedas nosotros\n                  saldremos y jugaremos"',
+                    fontSize: 10,
+                    color: Palette.black,
+                  ).only(bottom: 5.h),
+                  CustomButton(
+                    text: 'Empezar',
+                    backgroundColor: Palette.green,
+                    textColor: Palette.white,
                     onPressed: () {
-                      context.go('/Signup');
+                      Get.toNamed("/register");
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Palette.green,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Empezar',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              color: Palette.white),
-                        ).only(right: 20),
-                        const Icon(
-                          Icons.arrow_forward_ios,
-                          color: Palette.white,
-                        )
-                      ],
-                    ),
+                  ).only(bottom: 20.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Texts.bold(
+                        'Ya tienes una cuenta ?',
+                        fontSize: 12,
+                        color: Palette.black,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed("/login");
+                        },
+                        child: const Texts.bold(
+                          'Login',
+                          fontSize: 12,
+                          color: Palette.green,
+                        ),
+                      ),
+                    ],
                   ),
-                ).only(bottom: 100),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Ya tienes una cuenta ?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        context.go('/home');
-                      },
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Palette.green),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            ).marginOnly(top: 10.w, left: 6.h, right: 6.h),
+          ],
+        ),
       ),
     );
   }
