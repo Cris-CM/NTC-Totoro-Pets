@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:ntc_totoro_pets/features/Auth/Presentation/welcome_screen.dart';
-import 'package:ntc_totoro_pets/features/Auth/Presentation/sign_up.dart';
+import 'package:ntc_totoro_pets/features/Auth/Presentation/login_view.dart';
 
 final goRouter = GoRouter(
   initialLocation: "/welcome",
@@ -11,7 +11,7 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       path: "/Signup",
-      builder: (context, state) => const SignUp(),
+      builder: (context, state) => const LoginView(),
     )
   ],
 );

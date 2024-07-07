@@ -1,5 +1,6 @@
+import 'package:easy_padding/easy_padding.dart';
 import 'package:flutter/material.dart';
-import '../../core/colors/palette.dart';
+import '../core/colors/palette.dart';
 
 class TextfieldUser extends StatelessWidget {
   const TextfieldUser({
@@ -16,7 +17,7 @@ class TextfieldUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 470,
+      width: double.infinity,
       padding: const EdgeInsetsDirectional.only(start: 35),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -27,14 +28,11 @@ class TextfieldUser extends StatelessWidget {
             obscuretext, // Configurar para mostrar como contraseña si es necesario
         style: const TextStyle(fontSize: 22),
         decoration: InputDecoration(
-          prefixIcon: Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Icon(
-              icon,
-              color: Palette.greytranparent,
-              size: 35,
-            ),
-          ),
+          prefixIcon: Icon(
+            icon,
+            color: Palette.greytranparent,
+            size: 35,
+          ).only(right: 15),
           hintText: hintText,
           hintStyle: const TextStyle(
             fontSize: 25,
