@@ -28,7 +28,7 @@ class WelcomeScreen extends StatelessWidget {
                     'Hola Bienvenido',
                     fontSize: 20,
                     color: Palette.black,
-                  ).only(bottom: 2.h),
+                  ).only(bottom: 3.h),
                   const Texts.regular(
                     '"Mientras te sientas y te quedas nosotros\n                  saldremos y jugaremos"',
                     fontSize: 10,
@@ -64,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ).marginOnly(top: 15.w, left: 8.h, right: 8.h),
+            ).marginOnly(top: 10.w, left: 6.h, right: 6.h),
           ],
         ),
       ),
