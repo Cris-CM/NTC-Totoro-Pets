@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
           initialRoute: "/welcome",
           debugShowCheckedModeBanner: false,
           getPages: getRouter,
+          theme: ThemeData(),
         );
       },
     );
