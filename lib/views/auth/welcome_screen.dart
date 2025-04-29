@@ -12,7 +12,6 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.waterGreen,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/pikachu.png',
+                    'assets/images/logo.png',
                     height: 55.w,
                   ).only(bottom: 5.h),
                   const Texts.bold(
@@ -39,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                     backgroundColor: Palette.green,
                     textColor: Palette.white,
                     onPressed: () {
-                      Get.toNamed("/register");
+                      Get.toNamed("/login");
                     },
                   ).only(bottom: 20.h),
                   Row(
@@ -54,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                         onPressed: () {
                           Get.toNamed("/login");
                         },
-                        child: const Texts.bold(
+                        child: Texts.bold(
                           'Login',
                           fontSize: 12,
                           color: Palette.green,

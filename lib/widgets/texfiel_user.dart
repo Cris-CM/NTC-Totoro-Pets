@@ -2,49 +2,73 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../core/colors/palette.dart';
 
-class TextfieldUser extends StatelessWidget {
+class TextfieldUser extends StatefulWidget {
   const TextfieldUser({
     Key? key,
     this.hintText = '',
     this.icon,
     this.obscuretext = false,
-    required this.backgroundColor,
-    this.iconColor = Palette.blueGray,
+    this.iconColor = Palette.greytranparent,
+    this.controller,
   }) : super(key: key);
 
   final String hintText;
   final IconData? icon;
   final Color iconColor;
   final bool obscuretext;
-  final Color backgroundColor;
+  final TextEditingController? controller;
+
+  @override
+  State<TextfieldUser> createState() => _TextfieldUserState();
+}
+
+class _TextfieldUserState extends State<TextfieldUser> {
+  late bool _obscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    _obscureText = widget.obscuretext;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.only(left: 2.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: backgroundColor,
-      ),
-      child: TextField(
-        obscureText: obscuretext,
-        style: const TextStyle(fontSize: 22),
+      child: TextFormField(
+        obscureText: _obscureText,
+        controller: widget.controller,
+        style: const TextStyle(fontSize: 20),
         decoration: InputDecoration(
-          prefixIcon: icon != null
+          prefixIcon: widget.icon != null
               ? Icon(
-                  icon,
-                  color: iconColor,
+                  widget.icon,
+                  color: widget.iconColor,
                   size: 35,
                 )
               : null,
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
+            fontSize: 20,
             color: Palette.grey400,
           ),
-          border: InputBorder.none,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Palette.greytranparent),
+          ),
+          suffixIcon: widget.obscuretext
+              ? IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                    color: Palette.grey400,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                )
+              : null,
         ),
       ),
     );
